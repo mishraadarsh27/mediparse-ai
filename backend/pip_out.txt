@@ -1,0 +1,159 @@
+Collecting fastapi==0.111.0 (from -r requirements.txt (line 1))
+  Using cached fastapi-0.111.0-py3-none-any.whl.metadata (25 kB)
+Collecting uvicorn==0.29.0 (from uvicorn[standard]==0.29.0->-r requirements.txt (line 2))
+  Using cached uvicorn-0.29.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting pdfplumber==0.11.0 (from -r requirements.txt (line 3))
+  Using cached pdfplumber-0.11.0-py3-none-any.whl.metadata (39 kB)
+Collecting PyMuPDF==1.24.2 (from -r requirements.txt (line 4))
+  Using cached PyMuPDF-1.24.2.tar.gz (22.4 MB)
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  Preparing metadata (pyproject.toml) did not run successfully.
+  exit code: 1
+  
+  [125 lines of output]
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: ### Starting.
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: __name__: 'setup'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: platform.platform(): 'Windows-11-10.0.26200-SP0'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: platform.python_version(): '3.14.3'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: sys.executable: 'C:\\Users\\adars\\Downloads\\mediparse-ai-main\\mediparse-ai-main\\backend\\venv\\Scripts\\python.exe'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: CPU bits: 64 sys.maxsize=9223372036854775807
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: __file__: 'C:\\Users\\adars\\AppData\\Local\\Temp\\pip-install-vrdbc5td\\pymupdf_6f1031fd061647f39cfabc464570b231\\setup.py'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: os.getcwd(): 'C:\\Users\\adars\\AppData\\Local\\Temp\\pip-install-vrdbc5td\\pymupdf_6f1031fd061647f39cfabc464570b231'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: sys.argv (3):
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     0: 'C:\\Users\\adars\\Downloads\\mediparse-ai-main\\mediparse-ai-main\\backend\\venv\\Lib\\site-packages\\pip\\_vendor\\pyproject_hooks\\_in_process\\_in_process.py'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     1: 'prepare_metadata_for_build_wheel'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     2: 'C:\\Users\\adars\\AppData\\Local\\Temp\\tmpamkrr84o'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: os.environ (73):
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     ALLUSERSPROFILE: 'C:\\ProgramData'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     ANTIGRAVITY_AGENT: '1'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     ANTIGRAVITY_CLI_ALIAS: 'agy'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     APPDATA: 'C:\\Users\\adars\\AppData\\Roaming'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     CHOCOLATEYINSTALL: 'C:\\ProgramData\\chocolatey'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     CHOCOLATEYLASTPATHUPDATE: '134090608997736569'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     CHROME_CRASHPAD_PIPE_NAME: '\\\\.\\pipe\\crashpad_12932_TLHSKAEKXQFJGKQT'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     COLORTERM: 'truecolor'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     COMMONPROGRAMFILES: 'C:\\Program Files\\Common Files'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     COMMONPROGRAMFILES(X86): 'C:\\Program Files (x86)\\Common Files'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     COMMONPROGRAMW6432: 'C:\\Program Files\\Common Files'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     COMPUTERNAME: 'ADARSH'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     COMSPEC: 'C:\\WINDOWS\\system32\\cmd.exe'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     DRIVERDATA: 'C:\\Windows\\System32\\Drivers\\DriverData'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     EFC_5292_1262719628: '1'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     EFC_5292_1592913036: '1'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     EFC_5292_2283032206: '1'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     EFC_5292_2775293581: '1'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     EFC_5292_344590478: '1'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     EFC_5292_3789132940: '1'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     FPS_BROWSER_APP_PROFILE_STRING: 'Internet Explorer'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     FPS_BROWSER_USER_PROFILE_STRING: 'Default'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     GIT_ASKPASS: 'c:\\Users\\adars\\AppData\\Local\\Programs\\Antigravity\\resources\\app\\extensions\\git\\dist\\askpass.sh'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     HOMEDRIVE: 'C:'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     HOMEPATH: '\\Users\\adars'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     JAVA_HOME: 'C:\\Program Files\\Java\\jdk-23'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     LANG: 'en_US.UTF-8'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     LOCALAPPDATA: 'C:\\Users\\adars\\AppData\\Local'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     LOGONSERVER: '\\\\ADARSH'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     NUMBER_OF_PROCESSORS: '12'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     ONEDRIVE: 'C:\\Users\\adars\\OneDrive'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     ONEDRIVECONSUMER: 'C:\\Users\\adars\\OneDrive'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     ONLINESERVICES: 'Online Services'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     OS: 'Windows_NT'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PAGER: 'cat'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PATH: 'C:\\Users\\adars\\AppData\\Local\\Temp\\pip-build-env-xdan0811\\overlay\\Scripts;C:\\Users\\adars\\AppData\\Local\\Temp\\pip-build-env-xdan0811\\normal\\Scripts;C:\\Python314\\Scripts\\;C:\\Python314\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\HP\\HP One Agent;C:\\MinGW\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\MinGW\\bin;C:\\Program Files\\Java\\jdk-23\\bin;C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\160\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\160\\DTS\\Binn\\;C:\\Program Files (x86)\\cloudflared\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Users\\adars\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\;C:\\Users\\adars\\AppData\\Local\\Programs\\Python\\Python311\\;C:\\Users\\adars\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\adars\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\adars\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\adars\\AppData\\Local\\Programs\\Ollama;C:\\src\\flutter\\bin;C:\\Users\\adars\\AppData\\Local\\Programs\\Antigravity\\bin;C:\\Users\\adars\\AppData\\Roaming\\npm'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PATHEXT: '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW;.CPL'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PIP_BUILD_TRACKER: 'C:\\Users\\adars\\AppData\\Local\\Temp\\pip-build-tracker-3bylf0tn'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PLATFORMCODE: 'KV'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PROCESSOR_ARCHITECTURE: 'AMD64'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PROCESSOR_IDENTIFIER: 'AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PROCESSOR_LEVEL: '23'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PROCESSOR_REVISION: '6801'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PROGRAMDATA: 'C:\\ProgramData'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PROGRAMFILES: 'C:\\Program Files'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PROGRAMFILES(X86): 'C:\\Program Files (x86)'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PROGRAMW6432: 'C:\\Program Files'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PROMPT: '$P$G'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PSMODULEPATH: 'C:\\Users\\adars\\OneDrive\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\160\\Tools\\PowerShell\\Modules\\'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PUBLIC: 'C:\\Users\\Public'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PYTHONNOUSERSITE: '1'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     PYTHONPATH: 'C:\\Users\\adars\\AppData\\Local\\Temp\\pip-build-env-xdan0811\\site'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     REGIONCODE: 'APJ'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     SESSIONNAME: 'Console'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     SYSTEMDRIVE: 'C:'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     SYSTEMROOT: 'C:\\WINDOWS'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     TEMP: 'C:\\Users\\adars\\AppData\\Local\\Temp'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     TERM_PROGRAM: 'vscode'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     TERM_PROGRAM_VERSION: '1.107.0'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     TMP: 'C:\\Users\\adars\\AppData\\Local\\Temp'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     USERDOMAIN: 'ADARSH'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     USERDOMAIN_ROAMINGPROFILE: 'ADARSH'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     USERNAME: 'adars'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     USERPROFILE: 'C:\\Users\\adars'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     VSCODE_GIT_ASKPASS_EXTRA_ARGS: ''
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     VSCODE_GIT_ASKPASS_MAIN: 'c:\\Users\\adars\\AppData\\Local\\Programs\\Antigravity\\resources\\app\\extensions\\git\\dist\\askpass-main.js'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     VSCODE_GIT_ASKPASS_NODE: 'C:\\Users\\adars\\AppData\\Local\\Programs\\Antigravity\\Antigravity.exe'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     VSCODE_GIT_IPC_HANDLE: '\\\\.\\pipe\\vscode-git-e04f4e06ea-sock'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     VSCODE_INJECTION: '1'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     VSCODE_PYTHON_AUTOACTIVATE_GUARD: '1'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     WINDIR: 'C:\\WINDOWS'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     _PYPROJECT_HOOKS_BACKEND_PATH: 'C:\\Users\\adars\\AppData\\Local\\Temp\\pip-install-vrdbc5td\\pymupdf_6f1031fd061647f39cfabc464570b231'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py:     _PYPROJECT_HOOKS_BUILD_BACKEND: 'setup'
+  pipcl.py: build_wheel():  wheel_directory='C:\\Users\\adars\\AppData\\Local\\Temp\\pip-modern-metadata-b231ygw6' config_settings=None metadata_directory=None
+  pipcl.py: _call_fn_build(): calling self.fn_build=<function build at 0x0000029F98C95C70>
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: get_mupdf_internal(): out='dir' location=None sha=None
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: Download location='https://mupdf.com/downloads/archive/mupdf-1.24.1-source.tar.gz' local_tgz='mupdf-1.24.1-source.tar.gz' name='mupdf-1.24.1-source'
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: Downloading from location='https://mupdf.com/downloads/archive/mupdf-1.24.1-source.tar.gz' to local_tgz='mupdf-1.24.1-source.tar.gz'.
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: Extracting mupdf-1.24.1-source.tar.gz
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: Copying C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231/src_classic/_config.h to C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\mupdf-1.24.1-source/include/mupdf/fitz/config.h.
+  pymupdf_6f1031fd061647f39cfabc464570b231\setup.py: C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\mupdf-1.24.1-source/include/mupdf/fitz/config.h: os.stat_result(st_mode=33206, st_ino=3377699721077104, st_dev=8242765927514355119, st_nlink=1, st_uid=0, st_gid=0, st_size=5670, st_atime=1775313562, st_mtime=1713378207, st_ctime=1775313551) mtime=2024-04-17-18:23:27
+  C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\wdev.py: Looking for Python version='3.14' cpu.bits=64.
+  C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\wdev.py: Running: py -0p
+  C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\wdev.py: version2='3.14' bits=64 path='C:\\Python314\\python.exe' from line=' -V:3.14 *        C:\\Python314\\python.exe'.
+  Traceback (most recent call last):
+    File "C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\wdev.py", line 82, in __init__
+      assert os.path.isfile( devenv), f'Does not exist: {devenv}'
+             ~~~~~~~~~~~~~~^^^^^^^^^
+  AssertionError: Does not exist: C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\devenv.com
+  
+  The above exception was the direct cause of the following exception:
+  
+  Traceback (most recent call last):
+    File "C:\Users\adars\Downloads\mediparse-ai-main\mediparse-ai-main\backend\venv\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 389, in <module>
+      main()
+      ~~~~^^
+    File "C:\Users\adars\Downloads\mediparse-ai-main\mediparse-ai-main\backend\venv\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 373, in main
+      json_out["return_val"] = hook(**hook_input["kwargs"])
+                               ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\adars\Downloads\mediparse-ai-main\mediparse-ai-main\backend\venv\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 178, in prepare_metadata_for_build_wheel
+      whl_basename = backend.build_wheel(metadata_directory, config_settings)
+    File "C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\pipcl.py", line 642, in build_wheel
+      items = self._call_fn_build(config_settings)
+    File "C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\pipcl.py", line 804, in _call_fn_build
+      ret = self.fn_build()
+    File "C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\setup.py", line 556, in build
+      mupdf_build_dir = build_mupdf_windows( mupdf_local, env_extra, build_type)
+    File "C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\setup.py", line 693, in build_mupdf_windows
+      vs = pipcl.wdev.WindowsVS()
+    File "C:\Users\adars\AppData\Local\Temp\pip-install-vrdbc5td\pymupdf_6f1031fd061647f39cfabc464570b231\wdev.py", line 155, in __init__
+      raise Exception( f'Unable to find Visual Studio') from e
+  Exception: Unable to find Visual Studio
+  [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: C:\Users\adars\Downloads\mediparse-ai-main\mediparse-ai-main\backend\venv\Scripts\python.exe -m pip install --upgrade pip
+error: metadata-generation-failed
+
+Encountered error while generating package metadata.
+
+PyMuPDF
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
