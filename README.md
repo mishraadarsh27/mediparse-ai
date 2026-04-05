@@ -1,7 +1,7 @@
 <div align="center">
   <h1>⚡ MediParse AI</h1>
-  <p><strong>Next-Gen Medical Data Extraction & Revenue Cycle Management (RCM) Platform</strong></p>
-  <p><i>Unlocking Intelligence from Unstructured Clinical Records</i></p>
+  <p><strong>Intelligent Revenue Cycle Management (RCM) Automation Engine</strong></p>
+  <p><i>An AI-Powered Framework for Automated Medical Claim Parsing & Workflow Automation</i></p>
 </div>
 
 ---
