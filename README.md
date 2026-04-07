@@ -8,7 +8,7 @@
 
 ## 🌐 Overview
 
-MediParse AI is an enterprise-grade platform designed to bridge the gap between unstructured medical documentation and structured healthcare operations. By leveraging state-of-the-art Large Language Models (LLMs) and advanced Vision OCR, MediParse AI transforms messy PDFs, scanned bills, and handwritten prescriptions into validated, actionable data.
+mediParse AI is an enterprise-grade platform designed to bridge the gap between unstructured medical documentation and structured healthcare operations. By leveraging state-of-the-art Large Language Models (LLMs) and advanced Vision OCR, MediParse AI transforms messy PDFs, scanned bills, and handwritten prescriptions into validated, actionable data.
 
 The platform provides a complete end-to-end solution for hospitals and insurance providers (TPAs) to manage the entire **Revenue Cycle Lifecycle**—from pre-authorization and admission to discharge settlement and financial reconciliation.
 
