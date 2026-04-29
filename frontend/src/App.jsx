@@ -9,6 +9,8 @@ import DocumentDetailPage from './pages/DocumentDetailPage.jsx'
 import AnalyticsPage from './pages/AnalyticsPage.jsx'
 import RCMPage from './pages/RCMPage.jsx'
 import CaseDetailPage from './pages/CaseDetailPage.jsx'
+import SettingsPage from './pages/SettingsPage.jsx'
+import TpaFormsPage from './pages/TpaFormsPage.jsx'
 import HelpBot from './components/HelpBot.jsx'
 
 export default function App() {
@@ -35,6 +37,12 @@ export default function App() {
     openDetail(doc.id)
   }
 
+  const handleNav = useCallback((p) => {
+    setPage(p)
+    if (p !== 'detail')      setSelectedId(null)
+    if (p !== 'case-detail') setSelectedCaseId(null)
+  }, [])
+
   // 1. Initial State: No role selected -> Show Role Selection Gateway
   if (!sessionRole && !selectedRole) {
     return <RoleSelector onSelect={setSelectedRole} />
@@ -57,11 +65,7 @@ export default function App() {
       <Sidebar
         active={page}
         role={sessionRole}
-        onNav={p => {
-          setPage(p)
-          if (p !== 'detail')      setSelectedId(null)
-          if (p !== 'case-detail') setSelectedCaseId(null)
-        }}
+        onNav={handleNav}
         onSwitchRole={() => {
           setSessionRole(null)
           setSelectedRole(null)
@@ -75,9 +79,11 @@ export default function App() {
           {page === 'upload'      && <UploadPage onSuccess={onUploadSuccess} toast={toast} />}
           {page === 'documents'   && <DocumentsPage key={refreshKey} onOpen={openDetail} toast={toast} search={search} />}
           {page === 'detail'      && selectedId && <DocumentDetailPage docId={selectedId} onBack={() => setPage('documents')} toast={toast} />}
-          {page === 'analytics'   && <AnalyticsPage key={refreshKey} />}
+          {page === 'analytics'   && <AnalyticsPage key={refreshKey} onNav={handleNav} />}
+          {page === 'forms'       && <TpaFormsPage />}
           {page === 'rcm'         && <RCMPage role={sessionRole} onOpenCase={openCase} toast={toast} search={search} />}
           {page === 'case-detail' && selectedCaseId && <CaseDetailPage caseId={selectedCaseId} role={sessionRole} onBack={() => setPage('rcm')} toast={toast} />}
+          {page === 'settings'    && <SettingsPage />}
           
         
           </div>

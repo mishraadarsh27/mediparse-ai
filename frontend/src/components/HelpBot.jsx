@@ -105,7 +105,15 @@ export default function HelpBot() {
                 boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
                 border: c.role === 'user' ? 'none' : '1px solid var(--border)'
               }}>
-                {c.text}
+                {
+                  c.text.split(/(https?:\/\/[^\s]+)/g).map((part, idx) => 
+                    /(https?:\/\/[^\s]+)/g.test(part) ? (
+                      <a key={idx} href={part} target="_blank" rel="noopener noreferrer" style={{ color: '#00d4ff', textDecoration: 'underline', wordBreak: 'break-all' }}>
+                        {part}
+                      </a>
+                    ) : part
+                  )
+                }
               </div>
             ))}
             {loading && (

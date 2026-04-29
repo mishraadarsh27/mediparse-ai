@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { fetchDocument, exportCSV, exportJSON, updateDocumentFields } from '../api.js'
+import { fetchDocument, exportCSV, exportJSON, exportPrescription, updateDocumentFields } from '../api.js'
 import { ConfidenceRing } from '../components/TopBar.jsx'
 
 export default function DocumentDetailPage({ docId, onBack, toast }) {
@@ -108,6 +108,17 @@ export default function DocumentDetailPage({ docId, onBack, toast }) {
                 onClick={() => setEditFields(JSON.parse(JSON.stringify(doc.fields)))} 
                 style={{ background: 'var(--text)', color: '#fff', border: 'none', padding: '12px 24px', borderRadius: 12, fontWeight: 700, cursor: 'pointer', boxShadow: 'var(--shadow)' }}
               >✎ Review & Edit</button>
+              
+              {currentF.document_type?.toLowerCase().includes('prescription') && (
+                <button onClick={() => exportPrescription(docId)} style={{ 
+                  background: 'linear-gradient(135deg,#2563eb,#06b6d4)', color: '#fff', border: 'none', 
+                  padding: '12px 24px', borderRadius: 12, fontWeight: 800, cursor: 'pointer',
+                  boxShadow: '0 8px 20px rgba(37,99,235,0.2)', display: 'flex', alignItems: 'center', gap: 6
+                }}>
+                  💊 Download Smart PDF
+                </button>
+              )}
+
               <button className="btn btn-ghost" onClick={() => exportCSV(docId)}>↓ CSV</button>
               <button className="btn btn-ghost" onClick={() => exportJSON(docId)}>↓ FHIR JSON</button>
             </>
@@ -145,9 +156,9 @@ export default function DocumentDetailPage({ docId, onBack, toast }) {
       {/* High-Fidelity Data Cards */}
       <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:20, marginBottom:32 }}>
         {[
-          { label:'PATIENT',  value: p.name || 'Ramesh Kumar Sharma', icon: '👤' },
-          { label:'HOSPITAL', value: h.name || 'Medanta Super Speciality Hospital', icon: '🏥' },
-          { label:'DIAGNOSIS',value: diag.primary || 'Type 2 Diabetes Mellitus — Uncontrolled', icon: '🩺' },
+          { label:'PATIENT',  value: p.name || 'Not Detected', icon: '👤' },
+          { label:'HOSPITAL', value: h.name || 'Not Detected', icon: '🏥' },
+          { label:'DIAGNOSIS',value: diag.primary || 'Not Detected', icon: '🩺' },
           { label:'BALANCE DUE',value: b.amount_due ? `₹${Number(b.amount_due).toLocaleString('en-IN')}` : '₹0', accent:'var(--orange)', icon: '💰' },
         ].map(card => (
           <div key={card.label} className="card" style={{ 
@@ -376,9 +387,34 @@ function MedsTab({ meds, instructions }) {
   )
   return (
     <div>
+      {meds.length > 0 && (
+         <div className="card" style={{ padding: 0, overflow: 'hidden', marginBottom: 20 }}>
+            <table style={{ width:'100%', borderCollapse:'collapse' }}>
+              <thead style={{ background: 'var(--surface2)', borderBottom: '1px solid var(--border)', textAlign: 'left' }}>
+                <tr>
+                  <th style={{ padding: '12px 16px', fontSize: 11, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Medicine Name</th>
+                  <th style={{ padding: '12px 16px', fontSize: 11, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Dosage</th>
+                  <th style={{ padding: '12px 16px', fontSize: 11, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Frequency</th>
+                  <th style={{ padding: '12px 16px', fontSize: 11, color: 'var(--text3)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+                {meds.map((m, i) => (
+                  <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
+                    <td style={{ padding: '12px 16px', fontWeight: 600, color: 'var(--text)' }}>{m.name || '—'}</td>
+                    <td style={{ padding: '12px 16px', fontSize: 13, color: 'var(--text2)' }}>{m.dosage || '—'}</td>
+                    <td style={{ padding: '12px 16px', fontSize: 13, color: 'var(--text2)' }}>{m.frequency || '—'}</td>
+                    <td style={{ padding: '12px 16px', fontSize: 13, color: 'var(--text2)' }}>{m.duration || '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+         </div>
+      )}
       {instructions && (
         <div className="card" style={{ padding:'16px 20px', marginBottom:14 }}>
-          <div style={{ fontSize:13, color:'var(--text)', lineHeight:1.7 }}>{instructions}</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8 }}>Doctor's Special Instructions</div>
+          <div style={{ fontSize:14, color:'var(--text)', lineHeight:1.7 }}>{instructions}</div>
         </div>
       )}
     </div>

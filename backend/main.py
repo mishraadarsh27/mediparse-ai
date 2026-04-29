@@ -28,7 +28,7 @@ def root():
     return {"status": "MediParse AI v2.0", "time": datetime.utcnow().isoformat()}
 
 async def _process_file(filename: str, contents: bytes) -> dict:
-    raw_text, method = extract_text_from_pdf(contents)
+    raw_text, method = extract_text_from_pdf(contents, filename)
     if not raw_text.strip():
         raise HTTPException(status_code=422, detail="Could not extract text from PDF.")
     extracted  = run_extraction(raw_text)
@@ -57,8 +57,9 @@ async def _process_file(filename: str, contents: bytes) -> dict:
 
 @app.post("/api/upload")
 async def upload_document(file: UploadFile = File(...)):
-    if not file.filename.lower().endswith(".pdf"):
-        raise HTTPException(400, "Only PDF files supported.")
+    exts = (".pdf", ".png", ".jpg", ".jpeg")
+    if not file.filename.lower().endswith(exts):
+        raise HTTPException(400, "Only PDF, PNG, or JPG files supported.")
     return await _process_file(file.filename, await file.read())
 
 @app.post("/api/upload/batch")
@@ -118,6 +119,110 @@ def export_json_fhir(doc_id: str):
     return StreamingResponse(io.StringIO(json.dumps(export_to_fhir_json(doc["fields"]), indent=2)),
         media_type="application/json",
         headers={"Content-Disposition": f"attachment; filename=mediparse_{doc_id}_fhir.json"})
+
+@app.get("/api/documents/{doc_id}/export/prescription")
+def export_prescription_pdf(doc_id: str):
+    """Generate a clean, computerized PDF for handwritten prescriptions."""
+    doc = get_document_by_id(doc_id)
+    if not doc: raise HTTPException(404, "Not found")
+    
+    fields = doc.get("fields", {})
+    from reportlab.pdfgen import canvas
+    from reportlab.lib.pagesizes import A4
+    from reportlab.lib import colors
+    
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=A4)
+    w, h = A4
+    
+    # Header
+    c.setFillColor(colors.darkblue)
+    c.setFont("Helvetica-Bold", 18)
+    c.drawString(50, h - 50, "COMPUTARIZED SMART PRESCRIPTION")
+    c.setFont("Helvetica", 10)
+    c.setFillColor(colors.grey)
+    c.drawString(50, h - 65, "Generated securely via MediParse AI to ensure clear readability.")
+    
+    # Patient Details
+    c.setFillColor(colors.black)
+    c.setFont("Helvetica-Bold", 12)
+    c.drawString(50, h - 100, f"Patient Name: {fields.get('patient',{}).get('name') or 'N/A'}")
+    c.setFont("Helvetica", 11)
+    c.drawString(50, h - 120, f"Age/Gender: {fields.get('patient',{}).get('age') or '-'} / {fields.get('patient',{}).get('gender') or '-'}")
+    c.drawString(50, h - 140, f"Date: {fields.get('dates',{}).get('document_date') or datetime.utcnow().strftime('%Y-%m-%d')}")
+    
+    c.setFont("Helvetica-Bold", 12)
+    c.drawString(350, h - 100, f"Doctor: {fields.get('hospital',{}).get('doctor') or 'N/A'}")
+    c.setFont("Helvetica", 11)
+    c.drawString(350, h - 120, f"Hospital: {fields.get('hospital',{}).get('name') or 'N/A'}")
+    
+    c.setStrokeColor(colors.lightgrey)
+    c.line(50, h - 160, w - 50, h - 160)
+    
+    # Medications
+    c.setFont("Helvetica-Bold", 14)
+    c.setFillColor(colors.darkblue)
+    c.drawString(50, h - 190, "Rx / Medicines Prescribed:")
+    
+    c.setFillColor(colors.black)
+    y = h - 220
+    meds = fields.get("medications", [])
+    if not meds:
+        c.setFont("Helvetica-Oblique", 11)
+        c.drawString(50, y, "No medications explicitly detected.")
+    else:
+        for idx, med in enumerate(meds):
+            name = med.get("name") or "Unknown Med"
+            dosage = med.get("dosage") or "-"
+            freq = med.get("frequency") or "-"
+            dur = med.get("duration") or "-"
+            route = med.get("route") or ""
+            instruction = f"Take {dosage} | Frequency: {freq} | Duration: {dur} {(' | Route: '+route) if route else ''}"
+            
+            c.setFont("Helvetica-Bold", 12)
+            c.drawString(50, y, f"{idx+1}. {name}")
+            c.setFont("Helvetica", 11)
+            c.drawString(70, y - 18, instruction)
+            y -= 45
+            if y < 100:
+                c.showPage()
+                y = h - 50
+                
+    y -= 10
+    c.setStrokeColor(colors.lightgrey)
+    c.line(50, y, w - 50, y)
+    y -= 30
+    
+    c.setFont("Helvetica-Bold", 12)
+    c.drawString(50, y, "Diagnosis & Instructions:")
+    y -= 25
+    c.setFont("Helvetica", 11)
+    
+    # Handle both string and list formats of primary diagnosis safely
+    diag = fields.get("diagnosis", {}).get("primary")
+    if isinstance(diag, list) and diag:
+        diag = str(diag[0].get('condition', diag[0])) if isinstance(diag[0], dict) else str(diag[0])
+    elif not diag:
+        diag = "N/A"
+        
+    c.drawString(50, y, f"Diagnosis: {diag}")
+    y -= 20
+    
+    instructions = fields.get('special_instructions') or 'None'
+    # wrap text if too long
+    import textwrap
+    wrapped = textwrap.wrap(f"Notes: {instructions}", width=80)
+    for line in wrapped:
+        c.drawString(50, y, line)
+        y -= 15
+    
+    c.save()
+    buffer.seek(0)
+    return StreamingResponse(
+        buffer,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f"attachment; filename=Smart_Prescription_{doc_id}.pdf"}
+    )
 
 @app.put("/api/documents/{doc_id}/fields")
 def update_fields(doc_id: str, payload: dict):

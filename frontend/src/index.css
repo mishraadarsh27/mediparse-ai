@@ -785,3 +785,92 @@ body {
   animation: slidePop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   height: 100%;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .cyber-monitor-glass {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  
+  aside {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    padding: 20px 16px !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border) !important;
+    box-shadow: none !important;
+  }
+
+  aside nav {
+    display: flex !important;
+    overflow-x: auto !important;
+    padding-bottom: 10px;
+    gap: 10px !important;
+  }
+  
+  aside nav > div:first-child {
+    display: none !important; /* hide "Dashboard Menu" text */
+  }
+  
+  aside nav > div:last-child {
+    flex-direction: row !important;
+    width: max-content;
+  }
+
+  aside nav button {
+    padding: 10px 16px !important;
+    white-space: nowrap !important;
+  }
+  
+  .anim-fade[style*="justify-content: space-between"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 16px !important;
+    gap: 16px !important;
+  }
+
+  .google-search {
+    width: 100% !important;
+  }
+
+  main {
+    padding: 16px !important;
+    overflow-x: hidden !important;
+  }
+
+  .case-workflow-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .case-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    padding: 16px !important;
+  }
+
+  .case-card .icon-box {
+    margin-bottom: 8px !important;
+  }
+  
+  /* Topbar profile area wrap */
+  .anim-fade > div:last-child {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Floating Bot Button mobile adjust */
+  .bot-button-3d {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 24px !important;
+    bottom: 20px !important;
+    right: 20px !important;
+  }
+}

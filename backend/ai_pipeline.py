@@ -45,7 +45,7 @@ CRITICAL INSTRUCTION: Analyze the document and assign the MOST ACCURATE "documen
 Return this exact JSON structure:
 {
   "document_type": "Lab Report|Hospital Bill|Discharge Summary|Prescription|Insurance Form|Other",
-  "patient": {"name":null,"dob":null,"age":null,"gender":null,"uhid":null,"contact":null,"address":null},
+  "patient": {"name":null,"dob":null,"age":null,"gender":null,"uhid":null,"phone":null,"email":null,"address":null},
   "hospital": {"name":null,"doctor":null,"department":null,"ward_type":null,"registration_no":null},
   "dates": {"document_date":null,"admission_date":null,"discharge_date":null,"follow_up_date":null},
   "diagnosis": {"primary":null,"icd10_primary":null,"secondary":[],"icd10_secondary":[]},
@@ -58,6 +58,13 @@ Return this exact JSON structure:
   "referring_doctor": null
 }
 
+HANDWRITING & RX INSTRUCTIONS:
+1. If you see 'Rx', it denotes a prescription. The lines following it are medications. 
+2. Examples: 'T Spenzo 1mg OD' -> {name: 'Spenzo', dosage: '1mg', frequency: 'Once Daily', route: 'Tablet'}.
+3. 'Full Diagnosis' or 'Diagnosis' section must be captured in diagnosis.primary.
+4. If patient info like Name, Age, or Gender is written in a box or next to 'NAME:', capture it perfectly.
+5. Transcribe handwriting as accurately as possible. Do not guess, but look for medical context.
+
 DOCUMENT TEXT:
 """
 
@@ -67,24 +74,16 @@ def run_extraction(raw_text: str) -> dict:
     try:
         response = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
-            messages=[{"role": "user", "content": full_prompt}],
-            temperature=0.1,
-        )
-        return _parse_json(response.choices[0].message.content.strip())
-    except Exception as e:
-        print(f"[Groq] attempt 1 failed: {e}")
-        return _retry(raw_text)
-
-def _retry(raw_text: str) -> dict:
-    try:
-        response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[{"role": "user", "content": f"Extract medical billing data from this document. Return ONLY a JSON object with keys: document_type, patient, hospital, dates, diagnosis, procedures, lab_tests, medications, billing, insurance, special_instructions, referring_doctor.\n\n{raw_text[:8000]}"}],
+            messages=[
+                {"role": "system", "content": "You are a specialized medical JSON parser. You never hallucinate. If a field is missing, use null. For Rx medicines, ensure Name, Dosage, and Frequency are extracted separately."},
+                {"role": "user", "content": full_prompt}
+            ],
             temperature=0.0,
         )
-        return _parse_json(response.choices[0].message.content.strip())
+        text = response.choices[0].message.content.strip()
+        return _parse_json(text)
     except Exception as e:
-        print(f"[Groq] retry failed: {e}")
+        print(f"[Groq] attempt failed: {e}")
         return _empty()
 
 def _parse_json(text: str) -> dict:
@@ -100,7 +99,7 @@ def _parse_json(text: str) -> dict:
 def _empty() -> dict:
     return {
         "document_type": "Other",
-        "patient": {k: None for k in ["name","dob","age","gender","uhid","contact","address"]},
+        "patient": {k: None for k in ["name","dob","age","gender","uhid","phone","email","address"]},
         "hospital": {k: None for k in ["name","doctor","department","ward_type","registration_no"]},
         "dates": {k: None for k in ["document_date","admission_date","discharge_date","follow_up_date"]},
         "diagnosis": {"primary": None, "icd10_primary": None, "secondary": [], "icd10_secondary": []},

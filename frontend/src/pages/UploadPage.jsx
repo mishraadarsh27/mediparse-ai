@@ -18,10 +18,11 @@ export default function UploadPage({ onSuccess, toast }) {
   const inputRef = useRef()
 
   function addFiles(incoming) {
-    const pdfs = Array.from(incoming).filter(f => f.name.toLowerCase().endsWith('.pdf'))
-    if (!pdfs.length) { toast('Only PDF files are supported', 'error'); return }
-    if (mode === 'single') setFiles([pdfs[0]])
-    else setFiles(prev => [...prev, ...pdfs].slice(0, 10))
+    const allowed = ['.pdf', '.png', '.jpg', '.jpeg']
+    const validFiles = Array.from(incoming).filter(f => allowed.some(ext => f.name.toLowerCase().endsWith(ext)))
+    if (!validFiles.length) { toast('Only PDF, PNG, and JPG files are supported', 'error'); return }
+    if (mode === 'single') setFiles([validFiles[0]])
+    else setFiles(prev => [...prev, ...validFiles].slice(0, 10))
   }
 
   function removeFile(i) { setFiles(f => f.filter((_,idx) => idx !== i)) }
@@ -106,7 +107,7 @@ export default function UploadPage({ onSuccess, toast }) {
             fontSize:24, color:'var(--primary)', fontFamily:'var(--font-display)', fontWeight:700, zIndex:10
           }}>✨ Drop to Extract ✨</div>
         )}
-        <input ref={inputRef} type="file" accept=".pdf" multiple={mode==='batch'}
+        <input ref={inputRef} type="file" accept=".pdf,.png,.jpg,.jpeg" multiple={mode==='batch'}
           style={{ display:'none' }}
           onChange={e => addFiles(e.target.files)} />
 
@@ -116,10 +117,10 @@ export default function UploadPage({ onSuccess, toast }) {
               <div className="icon-3d lg icon-side icon-docs float" />
             </div>
             <div style={{ fontFamily:'var(--font-display)', fontWeight:800, fontSize:26, color:'var(--text)', letterSpacing:'-0.02em', marginBottom:8 }}>
-              Drop your medical PDF here
+              Drop your medical PDF or Images here
             </div>
             <div style={{ color:'var(--text3)', fontSize:15, marginBottom:28 }}>
-              or click to browse
+              or click to browse (supports .pdf, .png, .jpg)
             </div>
             <div style={{ display:'flex', gap:10, justifyContent:'center', flexWrap:'wrap' }}>
               {['Lab Report','Hospital Bill','Prescription','Discharge Summary'].map(t => (
@@ -157,7 +158,7 @@ export default function UploadPage({ onSuccess, toast }) {
             {mode === 'batch' && files.length < 10 && (
               <button className="btn btn-ghost" style={{ marginTop:20, fontSize:13 }}
                 onClick={e => { e.stopPropagation(); inputRef.current.click() }}>
-                + Add more PDFs
+                + Add more files
               </button>
             )}
           </div>
