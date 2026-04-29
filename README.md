@@ -1,79 +1,50 @@
-<div align="center">
-  <h1>⚡ MediParse AI</h1>
-  <p><strong>Intelligent Revenue Cycle Management (RCM) Automation Engine</strong></p>
-  <p><i>An AI-Powered Framework for Automated Medical Claim Parsing & Workflow Automation</i></p>
-</div>
+# MediParse AI 🏥
 
----
+MediParse AI is an automated Revenue Cycle Management (RCM) system. It helps hospitals and insurance providers (TPAs) quickly turn messy PDFs, handwritten prescriptions, and scanned bills into structured, actionable data using AI. 
 
-## 🌐 Overview
+## What it Does 📋
 
-mediParse AI is an enterprise-grade platform designed to bridge the gap between unstructured medical documentation and structured healthcare operations. By leveraging state-of-the-art Large Language Models (LLMs) and advanced Vision OCR, MediParse AI transforms messy PDFs, scanned bills, and handwritten prescriptions into validated, actionable data.
+- **Document Parsing:** Upload medical PDFs or scanned images, and the system automatically extracts key clinical parameters (like ICD codes, medicines, and billing amounts) using OCR and AI.
+- **RCM Workflow Tracking:** Manages the entire patient billing lifecycle: Pre-Auth → Admission → Enhancement → Discharge → Payment → Settlement.
+- **Financial Analytics:** Automatically checks for revenue leakage, TDS calculations, and hospital-payer mismatches.
+- **Role-Based Dashboards:** Separate, synced portals for Hospital staff and TPA Auditors.
+- **Export Options:** Easily export your data to FHIR-compliant JSON or CSV for your existing EMR/HIS systems.
 
-The platform provides a complete end-to-end solution for hospitals and insurance providers (TPAs) to manage the entire **Revenue Cycle Lifecycle**—from pre-authorization and admission to discharge settlement and financial reconciliation.
+## Tech Stack 💻
 
----
+- **Frontend:** React (Vite) with a custom CSS UI.
+- **Backend:** Python and FastAPI.
+- **AI/Extraction:** Groq API / Gemini combined with PyMuPDF and pdfplumber.
+- **Database:** Supabase (PostgreSQL) for real-time data sync.
 
-## 🚀 Core Features
+## Project Structure 📁
 
-- **Multi-Modal AI Extraction:** Ingests digital and scanned PDFs, extracting 30+ clinical parameters (ICD codes, medicines, billing amounts) with high confidence.
-- **Full RCM Lifecycle:** Orchestrates the 8-stage journey: Pre-Auth → Admission → Enhancement → Discharge → Payment → Settlement → Case Closure.
-- **Financial Analytics & Revenue Gap Tracking:** Automated reconciliation to identify revenue leakage, TDS calculations, and hospital-payer mismatch.
-- **Role-Based Portals:** Dedicated, synchronized interfaces for clinical teams (Hospital Portal) and claims auditors (TPA Portal).
-- **Export & Integration:** One-click exports to FHIR-compliant JSON and standardized CSV for seamless EMR/HIS integration.
-- **Human-in-the-Loop Validation:** Built-in logic engine for cross-verifying billing calculations with manual feedback synchronization.
-
----
-
-## 🛠 Technology Stack
-
-- **Frontend:** React (Vite) with a premium SaaS design system and dynamic dark-mode aesthetics.
-- **Backend:** FastAPI (Python) for ultra-low latency API responses and asynchronous processing.
-- **AI / ML Engine:** Advanced LLM inference (Gemini 2.0 / Llama-3) coupled with PyMuPDF for document vision.
-- **Database:** Supabase (PostgreSQL) for real-time synchronization and secure cloud storage.
-
----
-
-## 🗂 Project Structure
-
-```
+```text
 mediparse/
 ├── backend/
-│   ├── main.py           # API routing & service orchestration
-│   ├── ai_pipeline.py    # AI logic & structured extraction
-│   ├── rcm_engine.py     # Business logic for revenue reconciliation
-│   ├── storage.py        # Database integration (Supabase)
-│   └── extractor.py      # Vision OCR & PDF processing
+│   ├── main.py           # API routes
+│   ├── ai_pipeline.py    # AI text extraction logic
+│   ├── rcm_engine.py     # Revenue reconciliation logic
+│   ├── storage.py        # Supabase database operations
+│   └── extractor.py      # PDF parsing and OCR
 ├── frontend/
 │   ├── src/
-│   │   ├── api.js        # Global API client
-│   │   ├── components/   # Modular UI architecture
-│   │   └── pages/        # Dashboard, Analytics, Case Management
+│   │   ├── api.js        # API client
+│   │   ├── components/   # React components (TopBar, Sidebar, etc.)
+│   │   └── pages/        # Dashboard, Analytics, Upload pages
 │   └── package.json
-└── README.md             # Project documentation
+└── README.md
 ```
 
----
+## How to Run Locally ⚙️
 
-## ⚡ Setup & Installation
+### Backend
+1. Go to the `backend` folder.
+2. Install the required packages: `pip install -r requirements.txt`.
+3. Add your API keys (`SUPABASE_URL`, `SUPABASE_KEY`, `GEMINI_API_KEY`) to a `.env` file.
+4. Run the server: `python main.py`.
 
-### Backend Setup
-1. Navigate to the `backend` directory.
-2. Install dependencies: `pip install -r requirements.txt`.
-3. Configure your `.env` with `SUPABASE_URL`, `SUPABASE_KEY`, and `GEMINI_API_KEY`.
-4. Start the server: `python main.py`.
-
-### Frontend Setup
-1. Navigate to the `frontend` directory.
+### Frontend
+1. Go to the `frontend` folder.
 2. Install dependencies: `npm install`.
-3. Start the development server: `npm run dev`.
-
----
-
-## 📈 Impact
-
-MediParse AI reduces manual data entry time by **90%**, eliminates human error in billing reconciliation, and provides healthcare administrators with real-time visibility into their revenue health, ensuring faster claim settlements and better patient care delivery.
-
----
-
-© 2026 MediParse AI. All Rights Reserved.
+3. Start the Vite server: `npm run dev`.
