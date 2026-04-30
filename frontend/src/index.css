@@ -38,7 +38,7 @@
   --font-display:'Inter', sans-serif;
   --mono:        'IBM Plex Mono', monospace;
 
-  --sidebar-bg:  rgba(255, 255, 255, 0.6); 
+  --sidebar-bg:  rgba(255, 255, 255, 0.95); 
   --sidebar-text:#0F172A;
 
   --r:           14px;
@@ -73,7 +73,7 @@
   --card-bg:     rgba(6, 22, 17, 0.6);
   --card-border: rgba(16, 185, 129, 0.35);
 
-  --sidebar-bg:  rgba(6, 24, 18, 0.75);
+  --sidebar-bg:  rgba(6, 24, 18, 0.95);
   --sidebar-text:#ecfdf5;
 
   --accent-glow: rgba(16, 185, 129, 0.4);
@@ -147,7 +147,7 @@ a { color: var(--primary); text-decoration: none; }
 .pill-red    { background: var(--red-dim);      color: var(--red);    border: 1px solid rgba(239,68,68,0.1); }
 
 .card {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   backdrop-filter: var(--glass);
   -webkit-backdrop-filter: var(--glass);
   border: 1px solid var(--border);
@@ -359,7 +359,7 @@ a { color: var(--primary); text-decoration: none; }
   overflow: hidden;
   display: flex !important;
   margin-bottom: 24px !important;
-  background: rgba(22, 28, 45, 0.45) !important;
+  background: rgba(22, 28, 45, 0.85) !important;
   backdrop-filter: blur(28px) saturate(200%);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -499,7 +499,7 @@ a { color: var(--primary); text-decoration: none; }
   align-items: center;
   gap: 28px !important;
   margin-bottom: 16px !important;
-  background: rgba(255, 255, 255, 0.4) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
@@ -507,7 +507,7 @@ a { color: var(--primary); text-decoration: none; }
   box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
 }
 [data-theme='dark'] .case-card {
-  background: rgba(16, 20, 30, 0.6) !important;
+  background: rgba(16, 20, 30, 0.85) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
@@ -707,7 +707,7 @@ a { color: var(--primary); text-decoration: none; }
 
 /* Vision OS Frost Glass Overrides */
 .vision-panel {
-  background: rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
   backdrop-filter: blur(40px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(40px) saturate(140%) !important;
   border: 1px solid rgba(255, 255, 255, 0.35) !important;
@@ -721,7 +721,7 @@ a { color: var(--primary); text-decoration: none; }
 }
 
 [data-theme='dark'] .vision-panel {
-  background: rgba(10, 30, 45, 0.3) !important;
+  background: rgba(10, 30, 45, 0.8) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: 
     0 24px 48px -12px rgba(0, 0, 0, 0.5),
@@ -729,7 +729,7 @@ a { color: var(--primary); text-decoration: none; }
 }
 
 .vision-pill {
-  background: rgba(255, 255, 255, 0.4) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
   border-radius: 12px !important;
   padding: 12px 16px !important;
@@ -769,12 +769,12 @@ body {
   background: radial-gradient(circle at 50% 50%, #061118 0%, #020608 100%) !important;
 }
 .cyber-monitor-glass {
-  background: rgba(255,255,255,0.1) !important;
+  background: rgba(255,255,255,0.7) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
 }
 [data-theme='dark'] .cyber-monitor-glass {
-  background: rgba(0,0,0,0.3) !important;
+  background: rgba(0,0,0,0.6) !important;
 }
 
 @keyframes slidePop {
