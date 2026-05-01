@@ -25,6 +25,7 @@ async def startup_event():
 
 @app.get("/")
 def root():
+    """Health check endpoint to verify API is running."""
     return {"status": "MediParse AI v2.0", "time": datetime.utcnow().isoformat()}
 
 async def _process_file(filename: str, contents: bytes) -> dict:
