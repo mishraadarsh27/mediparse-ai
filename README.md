@@ -10,12 +10,14 @@ MediParse AI is an automated Revenue Cycle Management (RCM) system. It helps hos
 - **Role-Based Dashboards:** Separate, synced portals for Hospital staff and TPA Auditors.
 - **Export Options:** Easily export your data to FHIR-compliant JSON or CSV for your existing EMR/HIS systems.
 
-## Tech Stack 💻
+## Architecture & Tech Stack 💻
 
-- **Frontend:** React (Vite) with a custom CSS UI.
-- **Backend:** Python and FastAPI.
-- **AI/Extraction:** Groq API / Gemini combined with PyMuPDF and pdfplumber.
-- **Database:** Supabase (PostgreSQL) for real-time data sync.
+MediParse AI is built as a modern full-stack web application designed for high performance and rapid development.
+
+- **Frontend:** React (Vite) with a custom CSS UI for dynamic, responsive user experiences.
+- **Backend:** Python and FastAPI for fast, asynchronous API endpoints.
+- **AI/Extraction:** Groq API / Gemini combined with PyMuPDF and pdfplumber for high-accuracy OCR.
+- **Database:** Supabase (PostgreSQL) for real-time data sync and persistent storage.
 
 ## Project Structure 📁
 
