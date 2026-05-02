@@ -50,7 +50,3 @@ mediparse/
 1. Go to the `frontend` folder.
 2. Install dependencies: `npm install`.
 3. Start the Vite server: `npm run dev`.
-
-## Contributing 🤝
-
-Contributions are welcome! Please feel free to submit a Pull Request.
