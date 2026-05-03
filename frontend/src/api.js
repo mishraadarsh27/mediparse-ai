@@ -44,7 +44,7 @@ async function _download(url, filename) {
 }
 
 export const exportCSV  = (id) => _download(`/api/documents/${id}/export/csv`,  `mediparse_${id}.csv`)
-export const exportJSON = (id) => _download(`/api/documents/${id}/export/json`, `mediparse_${id}_fhir.json`)
+export const exportJSON = (id) => _download(`/api/documents/${id}/export/json`, `mediparse_${id}.json`)
 export const exportPrescription = (id) => _download(`/api/documents/${id}/export/prescription`, `Smart_Prescription_${id}.pdf`)
 
 export const sendChatbotMessage = (message) => req('/api/chatbot', {

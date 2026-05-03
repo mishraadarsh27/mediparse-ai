@@ -119,7 +119,7 @@ def export_json_fhir(doc_id: str):
     if not doc: raise HTTPException(404, "Not found")
     return StreamingResponse(io.StringIO(json.dumps(export_to_fhir_json(doc["fields"]), indent=2)),
         media_type="application/json",
-        headers={"Content-Disposition": f"attachment; filename=mediparse_{doc_id}_fhir.json"})
+        headers={"Content-Disposition": f"attachment; filename=mediparse_{doc_id}.json"})
 
 @app.get("/api/documents/{doc_id}/export/prescription")
 def export_prescription_pdf(doc_id: str):

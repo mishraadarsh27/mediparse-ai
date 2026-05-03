@@ -58,7 +58,7 @@ export default function DocumentDetailPage({ docId, onBack, toast }) {
     { id:'billing',  label:'Billing' },
     { id:'meds',     label:`Meds ${(currentF.medications||[]).length > 0 ? `(${currentF.medications.length})` : ''}` },
     { id:'raw',      label:'Raw Text' },
-    { id:'fhir',     label:'FHIR JSON' },
+    { id:'json',     label:'JSON Extraction' },
   ]
 
   return (
@@ -111,16 +111,16 @@ export default function DocumentDetailPage({ docId, onBack, toast }) {
               
               {currentF.document_type?.toLowerCase().includes('prescription') && (
                 <button onClick={() => exportPrescription(docId)} style={{ 
-                  background: 'linear-gradient(135deg,#2563eb,#06b6d4)', color: '#fff', border: 'none', 
-                  padding: '12px 24px', borderRadius: 12, fontWeight: 800, cursor: 'pointer',
-                  boxShadow: '0 8px 20px rgba(37,99,235,0.2)', display: 'flex', alignItems: 'center', gap: 6
+                  background: 'var(--text)', color: 'var(--surface)', border: 'none', 
+                  padding: '12px 24px', borderRadius: 8, fontWeight: 700, cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', gap: 6
                 }}>
                   💊 Download Smart PDF
                 </button>
               )}
 
-              <button className="btn btn-ghost" onClick={() => exportCSV(docId)}>↓ CSV</button>
-              <button className="btn btn-ghost" onClick={() => exportJSON(docId)}>↓ FHIR JSON</button>
+              <button className="btn btn-ghost" style={{ borderRadius: 8 }} onClick={() => exportCSV(docId)}>↓ Excel (CSV)</button>
+              <button className="btn btn-ghost" style={{ borderRadius: 8 }} onClick={() => exportJSON(docId)}>↓ JSON</button>
             </>
           )}
         </div>
@@ -240,7 +240,7 @@ export default function DocumentDetailPage({ docId, onBack, toast }) {
         {tab === 'billing'  && <BillingTab b={b} ins={ins} procs={currentF.procedures||[]} isEditing={isEditing} updateField={updateField} />}
         {tab === 'meds'     && <MedsTab meds={currentF.medications||[]} instructions={currentF.special_instructions} />}
         {tab === 'raw'      && <RawTab text={doc.raw_text} />}
-        {tab === 'fhir'     && <JsonTab fields={currentF} />}
+        {tab === 'json'     && <JsonTab fields={currentF} />}
       </div>
     </div>
   )

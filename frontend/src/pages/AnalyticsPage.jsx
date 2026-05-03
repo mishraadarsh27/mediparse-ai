@@ -77,13 +77,13 @@ export default function AnalyticsPage({ onNav }) {
             <span style={{ fontSize: 16 }}>↻</span> Refresh
           </button>
           <a href={`${API}/api/rcm/export/csv`} download style={{
-            background: 'linear-gradient(135deg, #2563EB, #06B6D4)', color: '#fff',
-            textDecoration:'none', borderRadius: 12, padding: '10px 20px', fontSize: 14, border: 'none',
-            fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8, boxShadow: '0 8px 20px rgba(37,99,235,0.3)',
-            cursor: 'pointer'
+            background: 'var(--text)', color: 'var(--surface)',
+            textDecoration:'none', borderRadius: 8, padding: '10px 20px', fontSize: 14, border: 'none',
+            fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8,
+            cursor: 'pointer', transition: 'opacity 0.2s'
           }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            Export Logs
+            Export CSV
           </a>
         </div>
       </div>
@@ -115,11 +115,11 @@ export default function AnalyticsPage({ onNav }) {
 
       {/* Horizontal Sleek Pipeline Wrapper */}
       <div style={{ 
-        background: 'var(--surface2)', borderRadius: 24, border: '1px solid var(--border)', 
-        padding: 32, marginBottom: 32, boxShadow: 'inset 0 2px 20px rgba(255,255,255,0.02), 0 10px 30px rgba(0,0,0,0.05)',
-        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24, position: 'relative'
+        background: 'var(--surface)', borderRadius: 16, border: '1px solid var(--border)', 
+        padding: 24, marginBottom: 32,
+        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16
       }}>
-        <PipelineNode onClick={() => onNav && onNav('rcm')} label="Total Claims" value={rcmStats?.total_cases || 0} sub="Fully Registered" color="#06b6d4" />
+        <PipelineNode onClick={() => onNav && onNav('rcm')} label="Total Claims" value={rcmStats?.total_cases || 0} sub="Fully Registered" color="var(--text)" />
         <PipelineNode onClick={() => onNav && onNav('rcm')} label="Active / Open" value={rcmStats?.open_cases || 0} sub="In Progress" color="#f59e0b" />
         <PipelineNode onClick={() => onNav && onNav('rcm')} label="Successfully Settled" value={rcmStats?.closed_cases || 0} sub="Reconciled" color="#10b981" />
         <PipelineNode onClick={() => onNav && onNav('rcm')} label="Rejected / Hold" value={rcmStats?.rejected_cases || 0} sub="Requires Action" color="#ef4444" isLast/>
@@ -219,37 +219,34 @@ export default function AnalyticsPage({ onNav }) {
 
 function PremiumStatCard({ label, value, icon, color, sub }) {
   return (
-    <div className="card anim-fade" style={{ 
-      background: 'var(--surface)', padding:'24px', borderRadius: 24, border: `1px solid var(--border)`,
-      boxShadow: '0 10px 30px rgba(0,0,0,0.05)', position: 'relative', overflow: 'hidden'
+    <div className="anim-fade" style={{ 
+      background: 'var(--surface)', padding:'24px', borderRadius: 16, border: `1px solid var(--border)`,
+      display: 'flex', flexDirection: 'column', gap: 12
     }}>
-      {/* Background glow blob */}
-      <div style={{ position: 'absolute', top: -30, right: -30, width: 100, height: 100, background: color, filter: 'blur(50px)', opacity: 0.15, pointerEvents: 'none' }} />
-      
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
-        <div style={{ fontSize: 13, color: 'var(--text2)', fontWeight: 700, letterSpacing: '0.02em' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ fontSize: 13, color: 'var(--text2)', fontWeight: 600 }}>
           {label}
         </div>
         <div>{icon}</div>
       </div>
-      <div style={{ fontWeight: 900, fontSize: 36, color: 'var(--text)', letterSpacing: '-0.03em', marginBottom: 8, lineHeight: 1 }}>
+      <div style={{ fontWeight: 800, fontSize: 32, color: 'var(--text)', lineHeight: 1 }}>
         {value}
       </div>
-      <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 600 }}>{sub}</div>
+      <div style={{ fontSize: 12, color: 'var(--text3)' }}>{sub}</div>
     </div>
   )
 }
 
 function PipelineNode({ label, value, sub, color, isLast, onClick }) {
   return (
-    <div style={{ position: 'relative', cursor: onClick ? 'pointer' : 'default', transition: '0.2s', padding: 8, borderRadius: 16 }} onClick={onClick} onMouseEnter={e => onClick && (e.currentTarget.style.background = 'var(--surface)')} onMouseLeave={e => onClick && (e.currentTarget.style.background = 'transparent')}>
-      <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 700, textTransform: 'uppercase', marginBottom: 8 }}>{label}</div>
-      <div style={{ fontSize: 32, fontWeight: 900, color: 'var(--text)', marginBottom: 4 }}>{value}</div>
-      <div style={{ fontSize: 12, color: color, fontWeight: 800 }}>{sub}</div>
+    <div style={{ position: 'relative', cursor: onClick ? 'pointer' : 'default', transition: '0.2s', padding: '12px 16px', borderRadius: 8 }} onClick={onClick} onMouseEnter={e => onClick && (e.currentTarget.style.background = 'var(--surface2)')} onMouseLeave={e => onClick && (e.currentTarget.style.background = 'transparent')}>
+      <div style={{ fontSize: 12, color: 'var(--text3)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 8 }}>{label}</div>
+      <div style={{ fontSize: 28, fontWeight: 800, color: 'var(--text)', marginBottom: 4 }}>{value}</div>
+      <div style={{ fontSize: 12, color: color, fontWeight: 600 }}>{sub}</div>
       
       {!isLast && (
-        <div style={{ position: 'absolute', top: '50%', right: -12, transform: 'translateY(-50%)', color: 'var(--border)' }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+        <div style={{ position: 'absolute', top: '50%', right: -8, transform: 'translateY(-50%)', color: 'var(--border)' }}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
         </div>
       )}
     </div>
@@ -258,9 +255,9 @@ function PipelineNode({ label, value, sub, color, isLast, onClick }) {
 
 function TelemetryBox({ label, val, color, onClick }) {
   return (
-    <div onClick={onClick} style={{ background: 'var(--surface2)', border: '1px solid var(--border)', borderRadius: 12, padding: '12px 16px', cursor: onClick ? 'pointer' : 'default', transition: '0.2s' }} onMouseEnter={e => onClick && (e.currentTarget.style.background = 'var(--surface3)')} onMouseLeave={e => onClick && (e.currentTarget.style.background = 'var(--surface2)')}>
-      <div style={{ fontSize: 20, fontWeight: 900, color: color || 'var(--text)' }}>{val}</div>
-      <div style={{ fontSize: 11, color: 'var(--text3)', fontWeight: 600, marginTop: 2 }}>{label}</div>
+    <div onClick={onClick} style={{ background: 'var(--surface2)', border: '1px solid var(--border)', borderRadius: 8, padding: '12px 16px', cursor: onClick ? 'pointer' : 'default', transition: '0.2s' }} onMouseEnter={e => onClick && (e.currentTarget.style.background = 'var(--surface3)')} onMouseLeave={e => onClick && (e.currentTarget.style.background = 'var(--surface2)')}>
+      <div style={{ fontSize: 20, fontWeight: 800, color: color || 'var(--text)' }}>{val}</div>
+      <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 4 }}>{label}</div>
     </div>
   )
 }
