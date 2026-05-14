@@ -1,8 +1,8 @@
-# MediParse AI 🏥
+# MediParse AI 
 
 MediParse AI is an automated Revenue Cycle Management (RCM) system. It helps hospitals and insurance providers (TPAs) quickly turn messy PDFs, handwritten prescriptions, and scanned bills into structured, actionable data using AI. 
 
-## What it Does 📋
+## What it Does 
 
 - **Document Parsing:** Upload medical PDFs or scanned images, and the system automatically extracts key clinical parameters (like ICD codes, medicines, and billing amounts) using OCR and AI.
 - **RCM Workflow Tracking:** Manages the entire patient billing lifecycle: Pre-Auth → Admission → Enhancement → Discharge → Payment → Settlement.
@@ -10,7 +10,7 @@ MediParse AI is an automated Revenue Cycle Management (RCM) system. It helps hos
 - **Role-Based Dashboards:** Separate, synced portals for Hospital staff and TPA Auditors.
 - **Export Options:** Easily export your data to FHIR-compliant JSON or CSV for your existing EMR/HIS systems.
 
-## Architecture & Tech Stack 💻
+## Architecture & Tech Stack 
 
 MediParse AI is built as a modern full-stack web application designed for high performance and rapid development.
 
@@ -19,7 +19,7 @@ MediParse AI is built as a modern full-stack web application designed for high p
 - **AI/Extraction:** Groq API / Gemini combined with PyMuPDF and pdfplumber for high-accuracy OCR.
 - **Database:** Supabase (PostgreSQL) for real-time data sync and persistent storage.
 
-## Project Structure 📁
+## Project Structure 
 
 ```text
 mediparse/
@@ -38,7 +38,7 @@ mediparse/
 └── README.md
 ```
 
-## How to Run Locally ⚙️
+## How to Run Locally 
 
 ### Backend
 1. Go to the `backend` folder.
