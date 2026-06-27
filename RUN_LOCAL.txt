@@ -1,0 +1,10 @@
+# Run Backend
+cd backend
+.\venv\Scripts\activate
+pip install -r requirements.txt
+python main.py
+
+# Run Frontend (in another terminal)
+cd frontend
+npm install
+npm run dev
